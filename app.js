@@ -1,4 +1,4 @@
-import uplaodToRedis from './controller/controller.js';
+const uplaodToRedis = require('./controller/controller.js');
 
 
 
