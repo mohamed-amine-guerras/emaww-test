@@ -2,7 +2,7 @@ const fs =  require('fs');
 const parser = require('xml2json');
 const redisClient = require('../services/redis-client.js');
 
-module.exports =  async function uplaodToRedis(filepath){
+module.exports =  async function uplaodToRedis(filepath, print){
     try {
         const data = fs.readFileSync(filepath);
         const parsedData = JSON.parse(parser.toJson(data));
@@ -13,8 +13,16 @@ module.exports =  async function uplaodToRedis(filepath){
             newCookies.push(`cookie:${cookies[i].name}:${cookies[i].host}`);
             newCookies.push(cookies[i]["$t"]);
         }
-        await redisClient.mSetAsync(["subdomains", subdomains, ...newCookies]);
+        let dataToUpload = ["subdomains", subdomains, ...newCookies];
+        await redisClient.mSetAsync(dataToUpload);
         await redisClient.quit()
+        if(print){
+            for(let i = 0; i < dataToUpload.length; i++){
+                if(i%2 == 0){
+                    console.log(dataToUpload[i]);
+                }
+            }
+        }
 
         return true;
         
