@@ -1,0 +1,20 @@
+{
+  "name": "Emaww Test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Mohamed Amine GUERRAS",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "redis": "^3.0.2"
+  },
+  "devDependencies": {
+    "jest": "^27.4.3"
+  }
+}
