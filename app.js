@@ -1,6 +1,5 @@
 import uplaodToRedis from './controller/controller.js';
-import express from 'express';
-const app = express();
+
 
 
 //import * as redisClient from './redis-client.js';
